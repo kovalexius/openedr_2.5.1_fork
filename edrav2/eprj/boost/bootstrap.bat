@@ -14,7 +14,8 @@ if exist ".\tools\build\src\engine\bin.ntx86_64\b2.exe" del tools\build\src\engi
 if exist ".\tools\build\src\engine\bin.ntx86_64\bjam.exe" del tools\build\src\engine\bin.ntx86_64\bjam.exe
 pushd tools\build\src\engine
 
-call .\build.bat %* > ..\..\..\..\bootstrap.log
+::call .\build.bat %* > ..\..\..\..\bootstrap.log
+call .\build.bat msvc : 14.3 > ..\..\..\..\bootstrap.log
 @ECHO OFF
 
 popd
@@ -50,6 +51,7 @@ IF "%1"=="vc11" SET TOOLSET=msvc : 11.0
 IF "%1"=="vc12" SET TOOLSET=msvc : 12.0
 IF "%1"=="vc14" SET TOOLSET=msvc : 14.0
 IF "%1"=="vc141" SET TOOLSET=msvc : 14.1
+IF "%1"=="vc143" SET TOOLSET=msvc : 14.3
 
 ECHO.
 ECHO Generating Boost.Build configuration in project-config.jam for %TOOLSET%...

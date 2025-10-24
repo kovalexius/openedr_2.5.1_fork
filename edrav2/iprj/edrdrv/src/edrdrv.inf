@@ -45,8 +45,8 @@ MiniFilter.DeleteDriverFiles  = 12          ;%windir%\system32\drivers
 OptionDesc          = %ServiceDescription%
 CopyFiles           = MiniFilter.CopyDriverFiles
 
-;;[DefaultInstall.ntamd64.Services]
-;;AddService          = %ServiceName%,,MiniFilter.Service
+[DefaultInstall.ntamd64.Services]
+AddService          = %ServiceName%,,MiniFilter.Service
 
 ;;[MiniFilter.Service.AddReg]
 ;;HKR, Parameters, ExampleValue, 0x00010001, 1
@@ -96,11 +96,15 @@ AddReg           = MiniFilter.AddRegistry
 ; Registry Modifications
 ;
 
+
 [MiniFilter.AddRegistry]
-HKR,,"SupportedFeatures",0x00010001,0x3
-HKR,"Instances","DefaultInstance",0x00000000,%DefaultInstance%
-HKR,"Instances\"%Instance1.Name%,"Altitude",0x00000000,%Instance1.Altitude%
-HKR,"Instances\"%Instance1.Name%,"Flags",0x00010001,%Instance1.Flags%
+HKR, Parameters,"SupportedFeatures",0x00010001,0x3
+;HKR,"Instances","DefaultInstance",0x00000000,%DefaultInstance%
+;HKR,"Instances\"%Instance1.Name%,"Altitude",0x00000000,%Instance1.Altitude%
+;HKR,"Instances\"%Instance1.Name%,"Flags",0x00010001,%Instance1.Flags%
+HKR,Parameters,"DefaultInstance",0x00000000,%DefaultInstance%
+HKR,Parameters,"Altitude",0x00000000,%Instance1.Altitude%
+HKR,Parameters,"Flags",0x00010001,%Instance1.Flags%
 
 
 
